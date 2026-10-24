@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Arc of Artificial Intelligence: 1950 to 2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;overflow-x:hidden}
+header{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0e17 0%,#1a1f36 100%)}
+header h1{font-size:2.4rem;font-weight:700;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+header p{font-size:1.05rem;color:#94a3b8;max-width:680px;margin:0 auto;line-height:1.6}
+.legend{display:flex;justify-content:center;gap:24px;padding:20px;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#94a3b8}
+.legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+.dot-foundation{background:#60a5fa}
+.dot-winter{background:#f87171}
+.dot-revival{background:#34d399}
+.dot-modern{background:#a78bfa}
+.dot-generative{background:#f472b6}
+.timeline{position:relative;max-width:900px;margin:0 auto;padding:40px 20px 80px}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#60a5fa,#f87171,#34d399,#a78bfa,#f472b6);transform:translateX(-50%)}
+.era-label{text-align:center;position:relative;margin:40px 0 20px;z-index:2}
+.era-label span{background:#1e293b;border:1px solid #334155;padding:8px 20px;border-radius:20px;font-size:0.9rem;font-weight:600;letter-spacing:0.5px}
+.entry{position:relative;width:50%;padding:10px 40px 30px}
+.entry.left{left:0;text-align:right}
+.entry.right{left:50%;text-align:left}
+.entry::after{content:'';position:absolute;top:18px;width:14px;height:14px;border-radius:50%;z-index:2}
+.entry.left::after{right:-7px}
+.entry.right::after{left:-7px}
+.entry.foundation::after{background:#60a5fa;box-shadow:0 0 12px #60a5fa80}
+.entry.winter::after{background:#f87171;box-shadow:0 0 12px #f8717180}
+.entry.revival::after{background:#34d399;box-shadow:0 0 12px #34d39980}
+.entry.modern::after{background:#a78bfa;box-shadow:0 0 12px #a78bfa80}
+.entry.generative::after{background:#f472b6;box-shadow:0 0 12px #f472b680}
+.card{background:#111827;border:1px solid #1e293b;border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
+.card .year{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.foundation .year{color:#60a5fa}
+.winter .year{color:#f87171}
+.revival .year{color:#34d399}
+.modern .year{color:#a78bfa}
+.generative .year{color:#f472b6}
+.card h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;color:#f1f5f9}
+.card p{font-size:0.88rem;line-height:1.55;color:#94a3b8}
+.card .who{font-size:0.78rem;color:#64748b;margin-top:8px;font-style:italic}
+footer{text-align:center;padding:40px 20px;color:#475569;font-size:0.82rem;border-top:1px solid #1e293b}
+footer a{color:#60a5fa;text-decoration:none}
+.refs{max-width:900px;margin:0 auto;padding:20px 20px 40px}
+.refs h2{font-size:1.2rem;margin-bottom:16px;color:#cbd5e1}
+.refs p{font-size:0.82rem;color:#64748b;line-height:1.7;margin-bottom:6px;padding-left:28px;text-indent:-28px}
+@media(max-width:700px){
+.timeline::before{left:20px}
+.entry{width:100%;left:0!important;text-align:left!important;padding-left:50px;padding-right:16px}
+.entry::after{left:14px!important;right:auto!important}
+header h1{font-size:1.6rem}
+}
+</style>
+</head>
+<body>
+<header>
+<h1>The Arc of Artificial Intelligence: 1950 to 2026</h1>
+<p>A visual timeline tracing the milestones, setbacks, and breakthroughs that shaped artificial intelligence over seven decades.</p>
+<p style="margin-top:10px;font-size:0.85rem;color:#64748b">Harsh Vyas | AIML-500 Workshop 1 | Indiana Wesleyan University</p>
+</header>
+
+<div class="legend">
+<span><span class="dot dot-foundation"></span>Foundations (1950s-1970s)</span>
+<span><span class="dot dot-winter"></span>AI Winters</span>
+<span><span class="dot dot-revival"></span>Revival & Rise (1997-2011)</span>
+<span><span class="dot dot-modern"></span>Deep Learning Era (2012-2021)</span>
+<span><span class="dot dot-generative"></span>Generative AI (2022-2026)</span>
+</div>
+
+<div class="timeline">
+
+<div class="era-label"><span>Foundations</span></div>
+
+<div class="entry left foundation">
+<div class="card">
+<div class="year">1950</div>
+<h3>The Turing Test</h3>
+<p>Alan Turing published "Computing Machinery and Intelligence," proposing the question "Can machines think?" and introducing the imitation game as a benchmark for machine intelligence.</p>
+<div class="who">Alan Turing, University of Manchester</div>
+</div>
+</div>
+
+<div class="entry right foundation">
+<div class="card">
+<div class="year">1956</div>
+<h3>Dartmouth Workshop</h3>
+<p>John McCarthy, Marvin Minsky, Nathaniel Rochester, and Claude Shannon organized a summer workshop at Dartmouth College that formally established artificial intelligence as a research discipline. The term "artificial intelligence" was coined here.</p>
+<div class="who">John McCarthy, Marvin Minsky et al.</div>
+</div>
+</div>
+
+<div class="entry left foundation">
+<div class="card">
+<div class="year">1957</div>
+<h3>The Perceptron</h3>
+<p>Frank Rosenblatt built the Mark I Perceptron at Cornell, the first hardware implementation of a neural network. It could learn to classify visual patterns, proving that machines could be trained from data rather than explicitly programmed.</p>
+<div class="who">Frank Rosenblatt, Cornell Aeronautical Laboratory</div>
+</div>
+</div>
+
+<div class="entry right foundation">
+<div class="card">
+<div class="year">1966</div>
+<h3>ELIZA</h3>
+<p>Joseph Weizenbaum at MIT created ELIZA, an early natural language processing program that simulated conversation by matching patterns in user input. It demonstrated that simple pattern matching could produce surprisingly convincing dialogue.</p>
+<div class="who">Joseph Weizenbaum, MIT</div>
+</div>
+</div>
+
+<div class="era-label"><span style="color:#f87171">First AI Winter</span></div>
+
+<div class="entry left winter">
+<div class="card">
+<div class="year">1974 - 1980</div>
+<h3>First AI Winter</h3>
+<p>Governments and agencies slashed AI funding after key reports (notably the Lighthill Report in the UK) concluded that AI research had failed to deliver on its promises. The combinatorial explosion problem made symbolic AI impractical for real world tasks, and hardware could not keep pace with algorithmic demands.</p>
+<div class="who">Triggered by the Lighthill Report (1973)</div>
+</div>
+</div>
+
+<div class="entry right foundation">
+<div class="card">
+<div class="year">1980</div>
+<h3>Expert Systems</h3>
+<p>Rule based expert systems such as R1/XCON at Digital Equipment Corporation revived commercial interest in AI. These systems encoded human expertise as if/then rules and saved companies millions in configuration and manufacturing decisions.</p>
+<div class="who">DEC, Stanford, Carnegie Mellon</div>
+</div>
+</div>
+
+<div class="era-label"><span style="color:#f87171">Second AI Winter</span></div>
+
+<div class="entry left winter">
+<div class="card">
+<div class="year">1987 - 1993</div>
+<h3>Second AI Winter</h3>
+<p>Expert systems proved brittle and expensive to maintain. The collapse of the Lisp machine market and the end of Japan's Fifth Generation Computer project signaled another period of disillusionment. Funding dried up as the gap between hype and capability became obvious again.</p>
+<div class="who">Industry wide contraction</div>
+</div>
+</div>
+
+<div class="era-label"><span style="color:#34d399">Revival and Rise</span></div>
+
+<div class="entry right revival">
+<div class="card">
+<div class="year">1997</div>
+<h3>Deep Blue Defeats Kasparov</h3>
+<p>IBM's Deep Blue became the first computer to beat a reigning world chess champion in a full match. The victory demonstrated that brute force search combined with specialized hardware could outperform human cognition in narrow, well defined domains.</p>
+<div class="who">IBM Research, Garry Kasparov</div>
+</div>
+</div>
+
+<div class="entry left revival">
+<div class="card">
+<div class="year">2009</div>
+<h3>ImageNet</h3>
+<p>Fei-Fei Li and her team at Stanford released ImageNet, a dataset of over 14 million labeled images organized by the WordNet hierarchy. It became the benchmark dataset that would fuel the deep learning revolution three years later.</p>
+<div class="who">Fei-Fei Li, Stanford Vision Lab</div>
+</div>
+</div>
+
+<div class="entry right revival">
+<div class="card">
+<div class="year">2011</div>
+<h3>Watson Wins Jeopardy!</h3>
+<p>IBM Watson defeated Jeopardy! champions Ken Jennings and Brad Rutter by combining natural language processing, information retrieval, and machine learning. It proved AI could handle the ambiguity and wordplay of human language at scale.</p>
+<div class="who">IBM Research</div>
+</div>
+</div>
+
+<div class="era-label"><span style="color:#a78bfa">Deep Learning Era</span></div>
+
+<div class="entry left modern">
+<div class="card">
+<div class="year">2012</div>
+<h3>AlexNet</h3>
+<p>Alex Krizhevsky, Ilya Sutskever, and Geoffrey Hinton trained a deep convolutional neural network on two NVIDIA GPUs and slashed the ImageNet error rate from 26% to 15.3%. This was the moment hardware (GPUs) finally caught up with decades old neural network theory, triggering the deep learning explosion.</p>
+<div class="who">Krizhevsky, Sutskever, Hinton (University of Toronto)</div>
+</div>
+</div>
+
+<div class="entry right modern">
+<div class="card">
+<div class="year">2014</div>
+<h3>Generative Adversarial Networks</h3>
+<p>Ian Goodfellow introduced GANs, where two neural networks compete against each other: one generates synthetic data and the other tries to distinguish it from real data. This adversarial setup enabled photorealistic image generation and opened the door to deepfakes and creative AI.</p>
+<div class="who">Ian Goodfellow et al., Universit&eacute; de Montr&eacute;al</div>
+</div>
+</div>
+
+<div class="entry left modern">
+<div class="card">
+<div class="year">2016</div>
+<h3>AlphaGo Defeats Lee Sedol</h3>
+<p>Google DeepMind's AlphaGo defeated Go world champion Lee Sedol 4 to 1. Go has more possible positions than atoms in the observable universe, so brute force was impossible. AlphaGo combined deep reinforcement learning with Monte Carlo tree search, a genuinely new approach.</p>
+<div class="who">Google DeepMind</div>
+</div>
+</div>
+
+<div class="entry right modern">
+<div class="card">
+<div class="year">2017</div>
+<h3>Attention Is All You Need</h3>
+<p>Vaswani et al. at Google Brain introduced the Transformer architecture, replacing recurrence with self attention mechanisms. Transformers could process entire sequences in parallel, making them faster to train and more effective at capturing long range dependencies. Every major language model since builds on this paper.</p>
+<div class="who">Vaswani et al., Google Brain</div>
+</div>
+</div>
+
+<div class="entry left modern">
+<div class="card">
+<div class="year">2020</div>
+<h3>GPT-3</h3>
+<p>OpenAI released GPT-3 with 175 billion parameters, demonstrating that scaling language models produces emergent capabilities. GPT-3 could write essays, generate code, translate languages, and answer questions without task specific fine tuning, a phenomenon called few shot learning.</p>
+<div class="who">OpenAI</div>
+</div>
+</div>
+
+<div class="era-label"><span style="color:#f472b6">Generative AI Era</span></div>
+
+<div class="entry right generative">
+<div class="card">
+<div class="year">2022</div>
+<h3>ChatGPT Launches</h3>
+<p>OpenAI released ChatGPT in November 2022, reaching 100 million users in two months. It made large language models accessible to the general public and forced every technology company to accelerate their AI roadmaps. The interface was simple, but the impact on public perception of AI was transformative.</p>
+<div class="who">OpenAI</div>
+</div>
+</div>
+
+<div class="entry left generative">
+<div class="card">
+<div class="year">2023</div>
+<h3>The Model Race</h3>
+<p>Google launched Gemini, Anthropic released Claude 2, and Meta open sourced Llama 2. Microsoft invested $10 billion in OpenAI and integrated Copilot across its products. Cloud providers (AWS, Azure, GCP) made GPU compute accessible at scale, removing the hardware barrier that had gated AI research for decades.</p>
+<div class="who">Google, Anthropic, Meta, Microsoft</div>
+</div>
+</div>
+
+<div class="entry right generative">
+<div class="card">
+<div class="year">2024 - 2025</div>
+<h3>Reasoning Models and Agents</h3>
+<p>OpenAI introduced o1 and o3 reasoning models that chain intermediate thoughts before answering. Claude gained tool use and agentic capabilities. AI systems moved from generating text to planning, executing multi step tasks, and using external tools, bridging the gap between language understanding and real world action.</p>
+<div class="who">OpenAI, Anthropic, Google DeepMind</div>
+</div>
+</div>
+
+<div class="entry left generative">
+<div class="card">
+<div class="year">2026</div>
+<h3>AI Agents and Autonomous Systems</h3>
+<p>AI agents capable of browsing the web, writing and executing code, managing workflows, and coordinating with other agents entered mainstream use. Companies began deploying agentic AI for customer service, software engineering, and research tasks, raising new questions about oversight, accountability, and the future of knowledge work.</p>
+<div class="who">OpenAI, Anthropic, Google, Microsoft, startups worldwide</div>
+</div>
+</div>
+
+</div>
+
+<div class="refs">
+<h2>References</h2>
+<p>Bhat, A. K. (2025, March 11). The evolution of AI: From foundations to future prospects. <em>IEEE Computer Society</em>. https://www.computer.org/publications/tech-news/research/evolution-of-ai</p>
+<p>Krizhevsky, A., Sutskever, I., &amp; Hinton, G. E. (2012). ImageNet classification with deep convolutional neural networks. <em>Advances in Neural Information Processing Systems, 25</em>.</p>
+<p>Putchuon. (2024, May 30). <em>The entire history of artificial intelligence (Last 100 years)</em> [Video]. YouTube. https://www.youtube.com/watch?v=mSd9nmPM7Vg</p>
+<p>Roser, M. (2022, December 6). The brief history of artificial intelligence: The world has changed fast. <em>Our World in Data</em>. https://ourworldindata.org/brief-history-of-ai</p>
+<p>Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, &Lstrok;., &amp; Polosukhin, I. (2017). Attention is all you need. <em>Advances in Neural Information Processing Systems, 30</em>. https://arxiv.org/abs/1706.03762</p>
+</div>
+
+<footer>
+<p>Built by Harsh Vyas | AIML-500 | Indiana Wesleyan University | October 2026</p>
+</footer>
+</body>
+</html>

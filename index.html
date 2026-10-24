@@ -7,25 +7,67 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Segoe UI',system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;overflow-x:hidden}
-header{text-align:center;padding:60px 20px 40px;background:linear-gradient(135deg,#0a0e17 0%,#1a1f36 100%)}
-header h1{font-size:2.4rem;font-weight:700;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
-header p{font-size:1.05rem;color:#94a3b8;max-width:680px;margin:0 auto;line-height:1.6}
-.legend{display:flex;justify-content:center;gap:24px;padding:20px;flex-wrap:wrap}
-.legend span{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#94a3b8}
-.legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block}
+
+/* Smooth scroll */
+html{scroll-behavior:smooth}
+
+/* Animated gradient background */
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 50%,rgba(96,165,250,0.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(167,139,250,0.06) 0%,transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(244,114,182,0.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+
+/* Floating particles */
+.particles{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0;overflow:hidden}
+.particle{position:absolute;border-radius:50%;opacity:0;animation:float linear infinite}
+@keyframes float{
+0%{transform:translateY(100vh) scale(0);opacity:0}
+10%{opacity:1}
+90%{opacity:1}
+100%{transform:translateY(-10vh) scale(1);opacity:0}
+}
+
+header{position:relative;z-index:1;text-align:center;padding:80px 20px 50px;background:transparent}
+header h1{font-size:2.8rem;font-weight:700;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6,#60a5fa);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 4s linear infinite;margin-bottom:16px}
+@keyframes shimmer{to{background-position:200% center}}
+header .subtitle{font-size:1.1rem;color:#94a3b8;max-width:680px;margin:0 auto;line-height:1.7;opacity:0;animation:fadeUp 0.8s 0.3s forwards}
+header .byline{margin-top:14px;font-size:0.85rem;color:#475569;opacity:0;animation:fadeUp 0.8s 0.6s forwards}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+/* Progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#60a5fa,#a78bfa,#f472b6);z-index:100;width:0%;transition:width 0.1s linear}
+
+/* Legend */
+.legend{position:relative;z-index:1;display:flex;justify-content:center;gap:24px;padding:20px;flex-wrap:wrap;opacity:0;animation:fadeUp 0.8s 0.9s forwards}
+.legend span{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:#94a3b8;transition:color 0.3s}
+.legend span:hover{color:#f1f5f9}
+.legend .dot{width:12px;height:12px;border-radius:50%;display:inline-block;transition:transform 0.3s,box-shadow 0.3s}
+.legend span:hover .dot{transform:scale(1.4);box-shadow:0 0 12px currentColor}
 .dot-foundation{background:#60a5fa}
 .dot-winter{background:#f87171}
 .dot-revival{background:#34d399}
 .dot-modern{background:#a78bfa}
 .dot-generative{background:#f472b6}
-.timeline{position:relative;max-width:900px;margin:0 auto;padding:40px 20px 80px}
-.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#60a5fa,#f87171,#34d399,#a78bfa,#f472b6);transform:translateX(-50%)}
-.era-label{text-align:center;position:relative;margin:40px 0 20px;z-index:2}
-.era-label span{background:#1e293b;border:1px solid #334155;padding:8px 20px;border-radius:20px;font-size:0.9rem;font-weight:600;letter-spacing:0.5px}
-.entry{position:relative;width:50%;padding:10px 40px 30px}
-.entry.left{left:0;text-align:right}
-.entry.right{left:50%;text-align:left}
-.entry::after{content:'';position:absolute;top:18px;width:14px;height:14px;border-radius:50%;z-index:2}
+
+/* Timeline */
+.timeline{position:relative;max-width:920px;margin:0 auto;padding:40px 20px 80px;z-index:1}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#60a5fa,#f87171,#34d399,#a78bfa,#f472b6);transform:translateX(-50%);opacity:0.4}
+
+/* Animated line tracer */
+.line-tracer{position:absolute;left:50%;top:0;width:3px;height:0;background:linear-gradient(to bottom,#60a5fa,#a78bfa,#f472b6);transform:translateX(-50%);z-index:1;transition:height 0.05s linear}
+
+/* Era labels */
+.era-label{text-align:center;position:relative;margin:50px 0 24px;z-index:2;opacity:0;transform:scale(0.8);transition:opacity 0.6s,transform 0.6s}
+.era-label.visible{opacity:1;transform:scale(1)}
+.era-label span{background:#1e293b;border:1px solid #334155;padding:10px 24px;border-radius:24px;font-size:0.9rem;font-weight:600;letter-spacing:0.5px;display:inline-block;transition:box-shadow 0.3s,transform 0.3s}
+.era-label span:hover{box-shadow:0 0 20px rgba(96,165,250,0.2);transform:scale(1.05)}
+
+/* Entries */
+.entry{position:relative;width:50%;padding:10px 40px 30px;opacity:0;transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1)}
+.entry.left{left:0;text-align:right;transform:translateX(-40px)}
+.entry.right{left:50%;text-align:left;transform:translateX(40px)}
+.entry.visible{opacity:1;transform:translateX(0)}
+
+/* Timeline dots */
+.entry::after{content:'';position:absolute;top:18px;width:14px;height:14px;border-radius:50%;z-index:2;transition:transform 0.4s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.4s;transform:scale(0)}
+.entry.visible::after{transform:scale(1)}
 .entry.left::after{right:-7px}
 .entry.right::after{left:-7px}
 .entry.foundation::after{background:#60a5fa;box-shadow:0 0 12px #60a5fa80}
@@ -33,35 +75,66 @@ header p{font-size:1.05rem;color:#94a3b8;max-width:680px;margin:0 auto;line-heig
 .entry.revival::after{background:#34d399;box-shadow:0 0 12px #34d39980}
 .entry.modern::after{background:#a78bfa;box-shadow:0 0 12px #a78bfa80}
 .entry.generative::after{background:#f472b6;box-shadow:0 0 12px #f472b680}
-.card{background:#111827;border:1px solid #1e293b;border-radius:12px;padding:20px;transition:transform 0.2s,box-shadow 0.2s}
-.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.4)}
-.card .year{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+
+/* Pulse on dot when visible */
+.entry.visible::after{animation:pulse 2s ease-in-out 0.5s 1}
+@keyframes pulse{
+0%,100%{box-shadow:0 0 12px currentColor}
+50%{box-shadow:0 0 24px currentColor,0 0 48px currentColor}
+}
+
+/* Cards */
+.card{background:rgba(17,24,39,0.8);backdrop-filter:blur(12px);border:1px solid #1e293b;border-radius:14px;padding:22px;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),box-shadow 0.35s,border-color 0.35s;cursor:default}
+.card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 12px 40px rgba(0,0,0,0.5);border-color:#334155}
+.card .year{font-size:0.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px;transition:letter-spacing 0.3s}
+.card:hover .year{letter-spacing:2.5px}
 .foundation .year{color:#60a5fa}
 .winter .year{color:#f87171}
 .revival .year{color:#34d399}
 .modern .year{color:#a78bfa}
 .generative .year{color:#f472b6}
-.card h3{font-size:1.05rem;font-weight:600;margin-bottom:6px;color:#f1f5f9}
-.card p{font-size:0.88rem;line-height:1.55;color:#94a3b8}
-.card .who{font-size:0.78rem;color:#64748b;margin-top:8px;font-style:italic}
-footer{text-align:center;padding:40px 20px;color:#475569;font-size:0.82rem;border-top:1px solid #1e293b}
-footer a{color:#60a5fa;text-decoration:none}
-.refs{max-width:900px;margin:0 auto;padding:20px 20px 40px}
+.card h3{font-size:1.08rem;font-weight:600;margin-bottom:8px;color:#f1f5f9;transition:color 0.3s}
+.card p{font-size:0.88rem;line-height:1.6;color:#94a3b8}
+.card .who{font-size:0.78rem;color:#64748b;margin-top:10px;font-style:italic;padding-top:8px;border-top:1px solid #1e293b}
+
+/* Connecting line animation on hover */
+.entry.left:hover::after,.entry.right:hover::after{transform:scale(1.5);box-shadow:0 0 20px currentColor,0 0 40px currentColor}
+
+/* References */
+.refs{max-width:920px;margin:0 auto;padding:30px 20px 40px;z-index:1;position:relative}
 .refs h2{font-size:1.2rem;margin-bottom:16px;color:#cbd5e1}
-.refs p{font-size:0.82rem;color:#64748b;line-height:1.7;margin-bottom:6px;padding-left:28px;text-indent:-28px}
+.refs p{font-size:0.82rem;color:#64748b;line-height:1.7;margin-bottom:8px;padding-left:28px;text-indent:-28px;transition:color 0.3s}
+.refs p:hover{color:#94a3b8}
+
+/* Footer */
+footer{position:relative;z-index:1;text-align:center;padding:40px 20px;color:#475569;font-size:0.82rem;border-top:1px solid #1e293b}
+
+/* Back to top */
+.back-to-top{position:fixed;bottom:30px;right:30px;width:44px;height:44px;border-radius:50%;background:#1e293b;border:1px solid #334155;color:#94a3b8;font-size:1.2rem;cursor:pointer;z-index:99;opacity:0;transform:translateY(20px);transition:opacity 0.3s,transform 0.3s,background 0.3s;display:flex;align-items:center;justify-content:center}
+.back-to-top.show{opacity:1;transform:translateY(0)}
+.back-to-top:hover{background:#334155;color:#f1f5f9}
+
+/* Mobile */
 @media(max-width:700px){
-.timeline::before{left:20px}
+.timeline::before,.line-tracer{left:20px}
 .entry{width:100%;left:0!important;text-align:left!important;padding-left:50px;padding-right:16px}
+.entry.left{transform:translateX(-20px)}
+.entry.right{transform:translateX(20px)}
 .entry::after{left:14px!important;right:auto!important}
-header h1{font-size:1.6rem}
+header h1{font-size:1.8rem}
+.back-to-top{bottom:16px;right:16px}
 }
 </style>
 </head>
 <body>
+
+<div class="progress-bar" id="progressBar"></div>
+<div class="particles" id="particles"></div>
+
 <header>
 <h1>The Arc of Artificial Intelligence: 1950 to 2026</h1>
-<p>A visual timeline tracing the milestones, setbacks, and breakthroughs that shaped artificial intelligence over seven decades.</p>
-<p style="margin-top:10px;font-size:0.85rem;color:#64748b">Harsh Vyas | AIML-500 Workshop 1 | Indiana Wesleyan University</p>
+<p class="subtitle">A visual timeline tracing the milestones, setbacks, and breakthroughs that shaped artificial intelligence over seven decades.</p>
+<p class="byline">Harsh Vyas | AIML-500 Workshop 1 | Indiana Wesleyan University</p>
 </header>
 
 <div class="legend">
@@ -72,7 +145,9 @@ header h1{font-size:1.6rem}
 <span><span class="dot dot-generative"></span>Generative AI (2022-2026)</span>
 </div>
 
-<div class="timeline">
+<div class="timeline" id="timeline">
+
+<div class="line-tracer" id="lineTracer"></div>
 
 <div class="era-label"><span>Foundations</span></div>
 
@@ -269,7 +344,76 @@ header h1{font-size:1.6rem}
 </div>
 
 <footer>
-<p>Built by Harsh Vyas | AIML-500 | Indiana Wesleyan University | October 2026</p>
+<p>Built by <a href="https://www.linkedin.com/in/eharshvyas/" target="_blank" style="color:#60a5fa;text-decoration:none;border-bottom:1px solid #60a5fa40;transition:border-color 0.3s">Harsh Vyas</a> | AIML-500 | Indiana Wesleyan University | October 2026</p>
 </footer>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&uarr;</button>
+
+<script>
+// Scroll-triggered reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('visible'), i * 60);
+      observer.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.entry, .era-label').forEach(el => observer.observe(el));
+
+// Progress bar
+const bar = document.getElementById('progressBar');
+const tl = document.getElementById('timeline');
+const tracer = document.getElementById('lineTracer');
+
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const docH = document.documentElement.scrollHeight - window.innerHeight;
+  bar.style.width = (scrolled / docH * 100) + '%';
+
+  // Line tracer
+  const tlRect = tl.getBoundingClientRect();
+  const tlTop = tl.offsetTop;
+  const tlH = tl.offsetHeight;
+  const progress = Math.min(Math.max((scrolled - tlTop + window.innerHeight * 0.6) / tlH, 0), 1);
+  tracer.style.height = (progress * tlH) + 'px';
+
+  // Back to top
+  document.getElementById('backToTop').classList.toggle('show', scrolled > 400);
+}, { passive: true });
+
+// Back to top
+document.getElementById('backToTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Floating particles
+const pc = document.getElementById('particles');
+const colors = ['#60a5fa','#a78bfa','#f472b6','#34d399','#f87171'];
+for (let i = 0; i < 30; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  const size = Math.random() * 4 + 2;
+  p.style.cssText = `
+    width:${size}px;height:${size}px;
+    left:${Math.random()*100}%;
+    background:${colors[Math.floor(Math.random()*colors.length)]};
+    animation-duration:${Math.random()*12+8}s;
+    animation-delay:${Math.random()*10}s;
+  `;
+  pc.appendChild(p);
+}
+
+// Stagger initial visible entries
+setTimeout(() => {
+  document.querySelectorAll('.entry, .era-label').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('visible');
+    }
+  });
+}, 100);
+</script>
 </body>
 </html>

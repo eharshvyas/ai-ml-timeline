@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ML vs Deep Learning: When to Use What</title>
+<title>Artifact 2: ML vs Deep Learning | Harsh Vyas</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -18,22 +18,19 @@ header .by{margin-top:10px;font-size:.85rem;color:#475569}
 
 .container{max-width:800px;margin:0 auto;padding:0 24px 80px}
 
+section{margin-bottom:48px}
+section h2{font-size:1.3rem;color:#f8fafc;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e293b}
+section h3{font-size:1.1rem;color:#a78bfa;margin:24px 0 8px}
+section p{color:#cbd5e1;margin-bottom:12px}
+section ul{color:#cbd5e1;margin:0 0 12px 24px}
+section li{margin-bottom:6px}
+
 .card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:36px;margin-bottom:40px;position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent,#60a5fa)}
-.card h2{font-size:1.4rem;margin-bottom:8px;color:#f8fafc}
+.card h2{border:none;padding:0}
 .card .tag{display:inline-block;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:16px;background:var(--tag-bg,#1e3a5f);color:var(--tag-color,#60a5fa)}
-.card h3{font-size:1.1rem;color:#a78bfa;margin:20px 0 8px}
-.card p{color:#cbd5e1;margin-bottom:12px}
-
 .ml-card{--accent:#60a5fa;--tag-bg:#1e3a5f;--tag-color:#60a5fa}
 .dl-card{--accent:#f472b6;--tag-bg:#4a1942;--tag-color:#f472b6}
-
-.vs{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:40px 0}
-.vs-box{background:#111827;border:1px solid #1e293b;border-radius:12px;padding:24px;text-align:center}
-.vs-box h4{font-size:.9rem;color:#94a3b8;margin-bottom:8px;text-transform:uppercase;letter-spacing:1px}
-.vs-box .val{font-size:2rem;font-weight:700}
-.vs-box:first-child .val{color:#60a5fa}
-.vs-box:last-child .val{color:#f472b6}
 
 table{width:100%;border-collapse:collapse;margin:20px 0}
 th,td{padding:12px 16px;text-align:left;border-bottom:1px solid #1e293b;font-size:.9rem}
@@ -41,18 +38,12 @@ th{color:#94a3b8;font-weight:600;font-size:.8rem;text-transform:uppercase;letter
 td{color:#cbd5e1}
 tr:hover td{background:#111827}
 
-.info{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:32px 0}
-.info-item{background:#0f172a;border:1px solid #1e293b;border-radius:10px;padding:16px}
-.info-item .label{font-size:.75rem;color:#64748b;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.info-item .value{color:#e2e8f0;font-size:.95rem}
-
 .back{display:inline-flex;align-items:center;gap:6px;color:#64748b;font-size:.85rem;margin-bottom:24px;transition:color .2s}
 .back:hover{color:#60a5fa;text-decoration:none}
 
 footer{text-align:center;padding:40px 20px;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
 
 @media(max-width:640px){
-  .vs,.info{grid-template-columns:1fr}
   .card{padding:24px}
 }
 </style>
@@ -69,90 +60,115 @@ footer{text-align:center;padding:40px 20px;color:#475569;font-size:.8rem;border-
 
 <a href="index.html" class="back">&larr; Artifact 1: AI Timeline</a>
 
-<div class="vs">
-  <div class="vs-box">
-    <h4>Traditional ML</h4>
-    <div class="val">Structured</div>
-    <p style="color:#64748b;font-size:.8rem;margin:0">Tabular data, engineered features</p>
+<!-- TITLE -->
+<section>
+  <h2>Title</h2>
+  <p>Machine Learning vs. Deep Learning: When to Use What</p>
+</section>
+
+<!-- INTRODUCTION -->
+<section>
+  <h2>Introduction</h2>
+  <p>Machine learning and deep learning are both subfields of artificial intelligence, but they differ significantly in how they process data, what problems they solve best, and the resources they require. Choosing the wrong approach for a given problem can waste time, money, and engineering effort. This artifact examines that choice through two real-world case studies: T-Mobile's use of traditional machine learning for customer churn prediction and Tesla's use of deep learning for autonomous driving perception. The goal is not just to define each approach but to reason about when and why one fits and the other does not.</p>
+</section>
+
+<!-- DESCRIPTION -->
+<section>
+  <h2>Description</h2>
+  <p>I selected two examples from the AIML-500 Workshop 2 lesson material, one representing traditional machine learning (customer churn prediction using SVMs and decision trees) and one representing deep learning (autonomous driving using convolutional neural networks). For each example, I identified a real-world company implementation and wrote a detailed analysis covering four questions: What does the system do? Why is the chosen approach suitable? Why would the alternative approach fail or introduce unnecessary complexity? And what are the practical tradeoffs in data requirements, compute, interpretability, and training time?</p>
+  <p>The analysis is structured as a two-case comparison with an accompanying summary table that highlights the key differences across seven dimensions.</p>
+</section>
+
+<!-- OBJECTIVE -->
+<section>
+  <h2>Objective</h2>
+  <p>To demonstrate the ability to differentiate between machine learning and deep learning not through textbook definitions alone, but by analyzing real-world constraints: data structure, feature engineering requirements, computational cost, model interpretability, and the needs of the stakeholders involved. This artifact shows applied reasoning about ML and DL tradeoffs in production contexts.</p>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <h2>Process</h2>
+  <p>I began by reviewing the Workshop 2 lesson content on the differences between ML and DL, including the examples provided (email spam detection, house price prediction, customer churn, image recognition, NLP, and autonomous driving). From these, I selected customer churn prediction and autonomous driving as the strongest pair because they sit at opposite ends of the data structure spectrum: one uses clean tabular data with known features, and the other processes raw high-dimensional visual input.</p>
+  <p>I then researched real-world implementations. T-Mobile has publicly discussed using ML for churn reduction, and Tesla's Autopilot system is a well-documented deep learning application. For each case, I traced the data pipeline from input to output, identified why the chosen architecture matches the problem, and explained why swapping approaches would break down. I structured the final output as a written report with separate sections for each case and a comparative table summarizing the key differences.</p>
+</section>
+
+<!-- TOOLS AND TECHNOLOGIES -->
+<section>
+  <h2>Tools and Technologies Used</h2>
+  <ul>
+    <li>AIML-500 Workshop 2 lesson material on types of machine learning</li>
+    <li>Tesla Autopilot public documentation and technical descriptions</li>
+    <li>T-Mobile Un-carrier program public information on customer retention</li>
+    <li>Written analytical report structured for comparison</li>
+    <li>GitHub Pages for portfolio hosting and presentation</li>
+  </ul>
+</section>
+
+<!-- VALUE PROPOSITION -->
+<section>
+  <h2>Value Proposition</h2>
+  <h3>Unique Value</h3>
+  <p>This artifact goes beyond definitions to demonstrate applied reasoning about ML and DL tradeoffs. Rather than simply listing what each approach is, it analyzes why a specific approach fits a specific business problem and what would go wrong if you chose the wrong one. This reflects the kind of decision-making required in real engineering and product roles, where selecting the right model architecture is one of the most consequential early choices in any AI project.</p>
+
+  <h3>Relevance</h3>
+  <p>Understanding when to use traditional ML versus deep learning is among the most common and most important decisions in applied AI work. An engineer who defaults to deep learning for every problem wastes compute and sacrifices interpretability. An engineer who avoids it misses problems where only learned feature representations will work. This analysis demonstrates that I can make that call based on data structure, stakeholder needs, and business context rather than tool familiarity or trend-following.</p>
+</section>
+
+<!-- THE ACTUAL ANALYSIS CONTENT -->
+<section>
+  <h2>Analysis</h2>
+
+  <div class="card ml-card">
+    <span class="tag">Machine Learning</span>
+    <h2>Customer Churn Prediction</h2>
+    <p><strong>Real-world application:</strong> T-Mobile's churn reduction program</p>
+
+    <p>T-Mobile uses machine learning to predict which customers are likely to leave and intervene with targeted retention offers. Their system processes structured customer data: contract length, monthly charges, call duration patterns, support tickets, and payment history. Algorithms like SVMs or gradient-boosted decision trees produce a churn probability score for each subscriber.</p>
+
+    <h3>Why ML Is the Right Fit</h3>
+    <p>Customer churn prediction works with traditional ML because the input features are structured, tabular, and well understood. A telecom company knows which variables matter: billing complaints, contract type, data usage. These features can be engineered manually and fed into algorithms like random forests. The dataset sizes are moderate (millions of rows, dozens of columns), and the relationships are often linear or moderately nonlinear. Models train quickly and produce interpretable results, which matters when business teams need to understand why a customer was flagged.</p>
+
+    <h3>Why Deep Learning Would Not Fit</h3>
+    <p>Deep learning requires large volumes of high-dimensional, unstructured data to justify its complexity. Churn data is tabular and low-dimensional. A deep neural network would learn the same mapping a simpler model handles, but with far more parameters, longer training times, and higher overfitting risk on a small feature space. The added complexity would not improve prediction quality and would make the model harder to explain to stakeholders.</p>
   </div>
-  <div class="vs-box">
-    <h4>Deep Learning</h4>
-    <div class="val">Perceptual</div>
-    <p style="color:#64748b;font-size:.8rem;margin:0">Raw signals, learned features</p>
+
+  <div class="card dl-card">
+    <span class="tag">Deep Learning</span>
+    <h2>Autonomous Driving Vision</h2>
+    <p><strong>Real-world application:</strong> Tesla Autopilot's camera-based perception</p>
+
+    <p>Tesla's Autopilot uses convolutional neural networks to process raw camera feeds from eight vehicle-mounted cameras. The system identifies pedestrians, lane markings, traffic signs, vehicles, and construction zones in real time, under varying lighting and weather. The neural network takes millions of pixel values per frame and extracts features at multiple levels, from edges and textures in early layers to complex spatial relationships in deeper layers.</p>
+
+    <h3>Why Deep Learning Is the Right Fit</h3>
+    <p>Autonomous driving is a textbook deep learning case. The input data is high-dimensional, unstructured, and full of variation. No human could manually define features for every combination of road conditions, lighting angles, and object orientations. A CNN learns these representations automatically, building hierarchical feature maps from simple patterns to abstract scene understanding. Tesla processes billions of miles of driving data to train these networks, and that volume is exactly what deep learning needs to generalize.</p>
+
+    <h3>Why Traditional ML Would Not Fit</h3>
+    <p>Traditional ML would require manually engineering features from raw camera images. Someone would need to define "pedestrian shape" or "stop sign" in pixel-level terms. This is impractical: a stop sign in sunlight looks fundamentally different from one in shadow or partially obscured. The input dimensionality is enormous (millions of pixels across three color channels), and flattening that into a feature vector for an SVM would lose the spatial structure that CNNs exploit. Traditional ML does not scale to perceptual tasks.</p>
   </div>
-</div>
 
-<!-- ML Example -->
-<div class="card ml-card">
-  <span class="tag">Machine Learning</span>
-  <h2>Customer Churn Prediction</h2>
-  <p><strong>Real-world application:</strong> T-Mobile's churn reduction program</p>
+  <h3>Key Differences at a Glance</h3>
+  <table>
+    <thead>
+      <tr><th>Dimension</th><th style="color:#60a5fa">ML (Churn)</th><th style="color:#f472b6">DL (Vision)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Data type</td><td>Structured / tabular</td><td>Unstructured / images</td></tr>
+      <tr><td>Feature engineering</td><td>Manual, domain-driven</td><td>Automatic, learned</td></tr>
+      <tr><td>Data volume needed</td><td>Moderate (millions of rows)</td><td>Massive (billions of frames)</td></tr>
+      <tr><td>Model complexity</td><td>Low to moderate</td><td>Very high (deep networks)</td></tr>
+      <tr><td>Interpretability</td><td>High (feature importance)</td><td>Low (black box)</td></tr>
+      <tr><td>Compute requirements</td><td>Standard CPU</td><td>GPU clusters</td></tr>
+      <tr><td>Training time</td><td>Minutes to hours</td><td>Days to weeks</td></tr>
+    </tbody>
+  </table>
+</section>
 
-  <p>T-Mobile uses machine learning to predict which customers are likely to leave and intervene with targeted retention offers. Their system processes structured customer data: contract length, monthly charges, call duration patterns, support tickets, and payment history. Algorithms like SVMs or gradient-boosted decision trees produce a churn probability score for each subscriber.</p>
-
-  <h3>Why ML Is the Right Fit</h3>
-  <p>Customer churn prediction works with traditional ML because the input features are structured, tabular, and well understood. A telecom company knows which variables matter: billing complaints, contract type, data usage. These features can be engineered manually and fed into algorithms like random forests. The dataset sizes are moderate (millions of rows, dozens of columns), and the relationships are often linear or moderately nonlinear. Models train quickly and produce interpretable results, which matters when business teams need to understand why a customer was flagged.</p>
-
-  <h3>Why Deep Learning Would Not Fit</h3>
-  <p>Deep learning requires large volumes of high-dimensional, unstructured data to justify its complexity. Churn data is tabular and low-dimensional. A deep neural network would learn the same mapping a simpler model handles, but with far more parameters, longer training times, and higher overfitting risk on a small feature space. The added complexity would not improve prediction quality and would make the model harder to explain to stakeholders.</p>
-</div>
-
-<!-- DL Example -->
-<div class="card dl-card">
-  <span class="tag">Deep Learning</span>
-  <h2>Autonomous Driving Vision</h2>
-  <p><strong>Real-world application:</strong> Tesla Autopilot's camera-based perception</p>
-
-  <p>Tesla's Autopilot uses convolutional neural networks to process raw camera feeds from eight vehicle-mounted cameras. The system identifies pedestrians, lane markings, traffic signs, vehicles, and construction zones in real time, under varying lighting and weather. The neural network takes millions of pixel values per frame and extracts features at multiple levels, from edges and textures in early layers to complex spatial relationships in deeper layers.</p>
-
-  <h3>Why Deep Learning Is the Right Fit</h3>
-  <p>Autonomous driving is a textbook deep learning case. The input data is high-dimensional, unstructured, and full of variation. No human could manually define features for every combination of road conditions, lighting angles, and object orientations. A CNN learns these representations automatically, building hierarchical feature maps from simple patterns to abstract scene understanding. Tesla processes billions of miles of driving data to train these networks, and that volume is exactly what deep learning needs to generalize.</p>
-
-  <h3>Why Traditional ML Would Not Fit</h3>
-  <p>Traditional ML would require manually engineering features from raw camera images. Someone would need to define "pedestrian shape" or "stop sign" in pixel-level terms. This is impractical: a stop sign in sunlight looks fundamentally different from one in shadow or partially obscured. The input dimensionality is enormous (millions of pixels across three color channels), and flattening that into a feature vector for an SVM would lose the spatial structure that CNNs exploit. Traditional ML does not scale to perceptual tasks.</p>
-</div>
-
-<!-- Comparison Table -->
-<h2 style="color:#f8fafc;margin:32px 0 16px">Key Differences at a Glance</h2>
-<table>
-  <thead>
-    <tr><th>Dimension</th><th style="color:#60a5fa">ML (Churn)</th><th style="color:#f472b6">DL (Vision)</th></tr>
-  </thead>
-  <tbody>
-    <tr><td>Data type</td><td>Structured / tabular</td><td>Unstructured / images</td></tr>
-    <tr><td>Feature engineering</td><td>Manual, domain-driven</td><td>Automatic, learned</td></tr>
-    <tr><td>Data volume needed</td><td>Moderate (millions of rows)</td><td>Massive (billions of frames)</td></tr>
-    <tr><td>Model complexity</td><td>Low to moderate</td><td>Very high (deep networks)</td></tr>
-    <tr><td>Interpretability</td><td>High (feature importance)</td><td>Low (black box)</td></tr>
-    <tr><td>Compute requirements</td><td>Standard CPU</td><td>GPU clusters</td></tr>
-    <tr><td>Training time</td><td>Minutes to hours</td><td>Days to weeks</td></tr>
-  </tbody>
-</table>
-
-<!-- Artifact Info -->
-<h2 style="color:#f8fafc;margin:40px 0 16px">Artifact Information</h2>
-<div class="info">
-  <div class="info-item">
-    <div class="label">Objective</div>
-    <div class="value">Differentiate ML and DL by analyzing real-world case studies and reasoning about when each approach fits</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Process</div>
-    <div class="value">Selected examples from AIML-500 lesson material, mapped to T-Mobile and Tesla implementations, analyzed data and architecture tradeoffs</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Tools</div>
-    <div class="value">Course materials, Tesla and T-Mobile public documentation, structured analytical report</div>
-  </div>
-  <div class="info-item">
-    <div class="label">Value Proposition</div>
-    <div class="value">Shows applied reasoning about ML/DL tradeoffs based on data structure and business context, not just definitions</div>
-  </div>
-</div>
-
-<h3 style="color:#94a3b8;margin:24px 0 8px;font-size:.9rem">References</h3>
-<p style="color:#64748b;font-size:.85rem">Tesla. <em>Autopilot and Full Self-Driving Capability.</em> <a href="https://www.tesla.com/autopilot">https://www.tesla.com/autopilot</a></p>
-<p style="color:#64748b;font-size:.85rem">T-Mobile. <em>Un-carrier.</em> <a href="https://www.t-mobile.com/news/un-carrier">https://www.t-mobile.com/news/un-carrier</a></p>
+<!-- REFERENCES -->
+<section>
+  <h2>References</h2>
+  <p style="color:#94a3b8;font-size:.9rem">Tesla. <em>Autopilot and Full Self-Driving Capability.</em> <a href="https://www.tesla.com/autopilot">https://www.tesla.com/autopilot</a></p>
+  <p style="color:#94a3b8;font-size:.9rem">T-Mobile. <em>Un-carrier.</em> <a href="https://www.t-mobile.com/news/un-carrier">https://www.t-mobile.com/news/un-carrier</a></p>
+</section>
 
 </div>
 

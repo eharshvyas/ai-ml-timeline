@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artifact 3: Neural Networks Explained | Harsh Vyas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;overflow-x:hidden;line-height:1.7}
+a{color:#60a5fa;text-decoration:none}
+a:hover{text-decoration:underline}
+
+header{text-align:center;padding:80px 20px 40px}
+header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;background:linear-gradient(90deg,#f59e0b,#ef4444,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+header p.sub{color:#94a3b8;font-size:1rem;max-width:640px;margin:0 auto}
+header .by{margin-top:10px;font-size:.85rem;color:#475569}
+
+.container{max-width:800px;margin:0 auto;padding:0 24px 80px}
+
+section{margin-bottom:48px}
+section h2{font-size:1.3rem;color:#f8fafc;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e293b}
+section h3{font-size:1.1rem;color:#f59e0b;margin:24px 0 8px}
+section p{color:#cbd5e1;margin-bottom:12px}
+section ul{color:#cbd5e1;margin:0 0 12px 24px}
+section li{margin-bottom:6px}
+
+.analogy-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:36px;margin-bottom:40px;position:relative;overflow:hidden}
+.analogy-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#f59e0b,#ef4444)}
+.analogy-card h3{color:#f59e0b;margin-top:0}
+.analogy-card p{color:#cbd5e1}
+
+.mapping{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.mapping-item{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center}
+.mapping-item .kitchen{font-size:1.1rem;color:#f59e0b;font-weight:600;margin-bottom:4px}
+.mapping-item .arrow{color:#475569;font-size:.8rem;margin:4px 0}
+.mapping-item .nn{font-size:.95rem;color:#a78bfa}
+
+.nav-links{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.back{display:inline-flex;align-items:center;gap:6px;color:#64748b;font-size:.85rem;transition:color .2s}
+.back:hover{color:#60a5fa;text-decoration:none}
+
+footer{text-align:center;padding:40px 20px;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
+
+@media(max-width:640px){
+  .analogy-card{padding:24px}
+  .mapping{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Neural Networks: The Kitchen Brigade</h1>
+  <p class="sub">How a neural network learns, explained through a kitchen that teaches itself to cook without a recipe</p>
+  <p class="by">Harsh Vyas &middot; AIML-500 Workshop 3 &middot; Artifact 3</p>
+</header>
+
+<div class="container">
+
+<div class="nav-links">
+  <a href="index.html" class="back">&larr; Artifact 1: AI Timeline</a>
+  <a href="artifact2.html" class="back">&larr; Artifact 2: ML vs DL</a>
+</div>
+
+<!-- TITLE -->
+<section>
+  <h2>Title</h2>
+  <p>Neural Networks: The Kitchen Brigade</p>
+</section>
+
+<!-- INTRODUCTION -->
+<section>
+  <h2>Introduction</h2>
+  <p>Neural networks are the engine behind modern deep learning, powering everything from image recognition to language models. But the way they work is often explained in jargon-heavy terms that lose most non-technical audiences. This artifact takes a different approach: it explains neural network architecture and training through an extended analogy of a restaurant kitchen learning to recreate a dish without a written recipe. Every element of the analogy maps directly to a real component of how neural networks function.</p>
+</section>
+
+<!-- DESCRIPTION -->
+<section>
+  <h2>Description</h2>
+  <p>This artifact was developed as part of a discussion activity in Workshop 3 of the AIML-500 course. The assignment challenged students to create the simplest possible explanation of neural networks in machine learning, inspired by Einstein's principle that if you cannot explain something simply, you do not understand it well enough. I built an extended analogy comparing a neural network to a kitchen brigade learning to cook chicken biryani through trial, feedback, and iterative adjustment. The analogy covers input layers, hidden layers, weights, activation, backpropagation, and the black box problem.</p>
+</section>
+
+<!-- OBJECTIVE -->
+<section>
+  <h2>Objective</h2>
+  <p>To demonstrate the ability to explain complex technical systems in accessible, accurate terms. This is not a technical deep-dive but a communication artifact: it shows that I can make neural network concepts understandable to someone with zero ML background while preserving the structural accuracy of the explanation.</p>
+</section>
+
+<!-- THE ANALOGY -->
+<section>
+  <h2>The Explanation</h2>
+
+  <div class="analogy-card">
+    <h3>The Setup</h3>
+    <p>Imagine you are training a completely new kitchen staff to recreate your grandmother's chicken biryani. Nobody has the recipe written down. All you can do is taste the final dish and tell them how close they got.</p>
+    <p>That is essentially how a neural network learns.</p>
+  </div>
+
+  <div class="analogy-card">
+    <h3>The Input Layer: Ingredients Arrive</h3>
+    <p>Ingredients arrive at the front of the kitchen. This is the input layer. Raw data comes in: numbers, pixels, text, whatever the network is designed to process. Each ingredient gets handed to the first line of cooks, who each pay a different amount of attention to different ingredients. One cook focuses heavily on the spice blend. Another focuses on the rice texture. These cooks are neurons, and the amount of attention each one pays is called a weight.</p>
+  </div>
+
+  <div class="analogy-card">
+    <h3>Hidden Layers: The Kitchen Stations</h3>
+    <p>The first line passes their partially processed work to the next line. This is a hidden layer. These cooks combine what the first line produced and extract higher-level patterns. Maybe one cook at this station notices that a certain combination of spice intensity and rice moisture tends to produce good flavor. She does not know why. She just learned the pattern from experience.</p>
+    <p>This can go several layers deep. The "deep" in deep learning literally refers to having many of these hidden layers stacked together. Each layer captures increasingly abstract features. In image recognition, early layers detect edges, middle layers detect shapes, and late layers detect whole objects like faces or cars. In our kitchen, early stations handle ingredient prep, middle stations handle cooking technique, and the final station handles plating.</p>
+  </div>
+
+  <div class="analogy-card">
+    <h3>The Output and Training Loop</h3>
+    <p>At the end, the output layer produces a result: a prediction, a classification, or in our case, a finished dish. The head chef tastes it and compares it to the target flavor. If it is too salty, that feedback travels backward through every station, and each cook adjusts their approach slightly. This backward adjustment process is called backpropagation.</p>
+    <p>Run it thousands of times with thousands of dishes, and the kitchen gradually learns to produce biryani that matches the target, even though no single cook understands the full recipe.</p>
+  </div>
+
+  <div class="analogy-card">
+    <h3>The Black Box Problem</h3>
+    <p>The catch: nobody can fully explain why the final combination of adjustments works. That is the "black box" problem in AI. The kitchen produces great biryani, but if you ask any individual cook to explain the whole recipe, they cannot. They only know their piece.</p>
+  </div>
+</section>
+
+<!-- CONCEPT MAPPING -->
+<section>
+  <h2>Concept Mapping</h2>
+  <div class="mapping">
+    <div class="mapping-item">
+      <div class="kitchen">Ingredients</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Input Layer (raw data)</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Line Cooks</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Neurons</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Cook's Attention</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Weights</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Kitchen Stations</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Hidden Layers</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Finished Dish</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Output Layer</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Chef's Feedback</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Backpropagation</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">No Written Recipe</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">Black Box Problem</div>
+    </div>
+    <div class="mapping-item">
+      <div class="kitchen">Many Stations Deep</div>
+      <div class="arrow">maps to</div>
+      <div class="nn">"Deep" Learning</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <h2>Process</h2>
+  <p>I started from the communication strategies covered in Workshop 3: storytelling, chunking, progressive disclosure, and relevance. Rather than defining neural networks and then finding an analogy afterward, I built the analogy first and checked that each element mapped accurately to the technical concept. I chose chicken biryani as the target dish because it is specific enough to be memorable and complex enough to justify a multi-station kitchen. I refined the analogy using Claude (Anthropic) to check the accuracy of each mapping and tighten the language.</p>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <h2>Tools and Technologies Used</h2>
+  <ul>
+    <li>AIML-500 Workshop 3 lesson material on deep learning and neural networks</li>
+    <li>Communication strategy framework from Workshop 3 (storytelling, chunking, progressive disclosure)</li>
+    <li>Claude (Anthropic) for analogy refinement and accuracy checking</li>
+    <li>GitHub Pages for portfolio hosting and presentation</li>
+  </ul>
+</section>
+
+<!-- VALUE PROPOSITION -->
+<section>
+  <h2>Value Proposition</h2>
+  <h3>Unique Value</h3>
+  <p>Most portfolio artifacts demonstrate what someone knows. This one demonstrates how I communicate what I know. The ability to make complex systems understandable to non-specialists is a core skill for any AI/ML role that involves stakeholder communication, team leadership, or client-facing work.</p>
+
+  <h3>Relevance</h3>
+  <p>In applied AI work, technical ability alone is not enough. Engineers who can explain their work clearly to product managers, executives, and non-technical collaborators are disproportionately effective. This artifact shows that I can bridge that gap without dumbing down the content.</p>
+</section>
+
+</div>
+
+<footer>
+  Harsh Vyas &middot; Indiana Wesleyan University &middot; AIML-500 Machine Learning Fundamentals &middot; 2026
+</footer>
+
+</body>
+</html>

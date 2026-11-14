@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artifact 4: Navigating Data Challenges &amp; Human Bias | Harsh Vyas</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,sans-serif;background:#0a0e17;color:#e0e0e0;overflow-x:hidden;line-height:1.7}
+a{color:#60a5fa;text-decoration:none}
+a:hover{text-decoration:underline}
+
+header{text-align:center;padding:80px 20px 40px}
+header h1{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:700;background:linear-gradient(90deg,#f59e0b,#ef4444,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+header p.sub{color:#94a3b8;font-size:1rem;max-width:640px;margin:0 auto}
+header .by{margin-top:10px;font-size:.85rem;color:#475569}
+
+.container{max-width:800px;margin:0 auto;padding:0 24px 80px}
+
+section{margin-bottom:48px}
+section h2{font-size:1.3rem;color:#f8fafc;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #1e293b}
+section h3{font-size:1.1rem;color:#f59e0b;margin:24px 0 8px}
+section p{color:#cbd5e1;margin-bottom:12px}
+section ul{color:#cbd5e1;margin:0 0 12px 24px}
+section li{margin-bottom:6px}
+
+.scenario-card{background:#111827;border:1px solid #1e293b;border-radius:16px;padding:36px;margin-bottom:32px;position:relative;overflow:hidden}
+.scenario-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent,#60a5fa)}
+.scenario-card h3{color:var(--accent);margin-top:0}
+.scenario-card p{color:#cbd5e1}
+
+.s1{--accent:#60a5fa}
+.s2{--accent:#f59e0b}
+.s3{--accent:#a78bfa}
+
+.tag{display:inline-block;font-size:.75rem;font-weight:600;padding:4px 12px;border-radius:20px;margin-bottom:16px;background:var(--tag-bg,#1e3a5f);color:var(--accent)}
+.s1 .tag{--tag-bg:#1e3a5f}
+.s2 .tag{--tag-bg:#3d2e0a}
+.s3 .tag{--tag-bg:#2d1f5e}
+
+.takeaway{background:#0f172a;border-left:3px solid var(--accent,#60a5fa);padding:16px 20px;border-radius:0 12px 12px 0;margin:20px 0;font-size:.9rem;color:#94a3b8;font-style:italic}
+
+.insight-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}
+.insight-item{background:#0f172a;border:1px solid #1e293b;border-radius:12px;padding:20px;text-align:center}
+.insight-item .num{font-size:1.6rem;font-weight:700;color:#f59e0b;margin-bottom:4px}
+.insight-item .label{font-size:.85rem;color:#94a3b8}
+
+.nav-links{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:24px}
+.back{display:inline-flex;align-items:center;gap:6px;color:#64748b;font-size:.85rem;transition:color .2s}
+.back:hover{color:#60a5fa;text-decoration:none}
+
+footer{text-align:center;padding:40px 20px;color:#475569;font-size:.8rem;border-top:1px solid #1e293b;margin-top:40px}
+
+@media(max-width:640px){
+  .scenario-card{padding:24px}
+  .insight-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Navigating Data Challenges &amp; Human Bias</h1>
+  <p class="sub">How data quality, historical bias, and privacy constraints shape what ML models learn and who they serve</p>
+  <p class="by">Harsh Vyas &middot; AIML-500 Workshop 4 &middot; Artifact 4</p>
+</header>
+
+<div class="container">
+
+<div class="nav-links">
+  <a href="index.html" class="back">&larr; Artifact 1: AI Timeline</a>
+  <a href="artifact2.html" class="back">&larr; Artifact 2: ML vs DL</a>
+  <a href="artifact3.html" class="back">&larr; Artifact 3: Neural Networks</a>
+</div>
+
+<!-- TITLE -->
+<section>
+  <h2>Title</h2>
+  <p>Navigating Data Challenges and Human Bias in Machine Learning</p>
+</section>
+
+<!-- INTRODUCTION -->
+<section>
+  <h2>Introduction</h2>
+  <p>Every machine learning model is a product of its data. When that data carries quality problems, historical biases, or privacy constraints, the model inherits those issues and can amplify them at scale. This artifact synthesizes lessons from two Workshop 4 activities: an interactive chatbot exercise exploring three realistic data challenge scenarios, and a leadership discussion on navigating human bias in AI development. Together, they demonstrate that responsible ML practice is not a separate discipline from technical ML work. It is embedded in every decision about what data to collect, how to clean it, what labels to trust, and whose experience the model is allowed to learn from.</p>
+</section>
+
+<!-- DESCRIPTION -->
+<section>
+  <h2>Description</h2>
+  <p>This artifact integrates insights from two complementary assignments. The Data Challenge Scenarios exercise presented three progressively complex situations: cleaning 800,000 noisy customer reviews for a sentiment model, evaluating a hiring model trained on historical decisions before scaling it to a new country, and designing a privacy-preserving collaboration between two hospitals building a diagnostic model. The Navigating Human Bias discussion required crafting a personal value statement and field-specific strategies for addressing bias as a leader in AI/ML development.</p>
+  <p>Rather than summarizing each assignment separately, this artifact distills the underlying principles that connect them: the ways data decisions encode human choices, and the strategies practitioners can use to identify and mitigate those choices before they become system-level failures.</p>
+</section>
+
+<!-- OBJECTIVE -->
+<section>
+  <h2>Objective</h2>
+  <p>To demonstrate the ability to identify how human bias enters machine learning systems through data, labels, and design decisions, and to articulate practical strategies for detection and mitigation at each stage of the ML pipeline.</p>
+</section>
+
+<!-- THE THREE SCENARIOS -->
+<section>
+  <h2>Key Lessons from Data Challenge Scenarios</h2>
+
+  <div class="scenario-card s1">
+    <span class="tag">Scenario 1</span>
+    <h3>Data Quality Is a Design Decision</h3>
+    <p>When ReviewPulse needed to clean 800,000 customer reviews, the first instinct was to aggressively remove anything that looked unusual: emoji-only reviews, non-English text, entries with missing fields. But cleaning is not neutral. Every exclusion rule defines who the model gets to learn from. Removing emoji-only reviews disproportionately removes younger users and certain cultural demographics. Removing non-English reviews silences multilingual customers.</p>
+    <p>The right approach starts with preserving the raw data, profiling what exists before deleting anything, and auditing the labels themselves. Star-rating-derived sentiment labels carry their own biases: star inflation varies by platform, product category, and cultural norms. A 4-star review on one platform may carry the same sentiment as a 3-star review on another.</p>
+    <div class="takeaway">Data cleaning defines what the model is allowed to learn and whose experience counts as valid input.</div>
+  </div>
+
+  <div class="scenario-card s2">
+    <span class="tag">Scenario 2</span>
+    <h3>Historical Labels Carry Historical Bias</h3>
+    <p>TalentBridge trained a hiring model on ten years of one company's decisions and wanted to deploy it in a new country. The model performed well on held-out test data, but that test data came from the same distribution as the training data. Strong performance on familiar data does not prove generalization.</p>
+    <p>The deeper issue is label validity. "Previously hired" is not the same as "would perform well in the role." Historical hiring decisions encode institutional preferences, network effects, and potentially discriminatory patterns. Removing protected attributes does not solve this because proxy variables like zip code, university name, and employment gaps carry the same signal through a different path.</p>
+    <p>Responsible scaling requires local validation with representative data, subgroup-level evaluation, a staged pilot with human review, and an appeals process for rejected candidates.</p>
+    <div class="takeaway">A model does not earn a universal passport because it performed well on yesterday's data. Labels, populations, and fairness assumptions must be re-validated in every new context.</div>
+  </div>
+
+  <div class="scenario-card s3">
+    <span class="tag">Scenario 3</span>
+    <h3>Privacy Is Layered, Not Binary</h3>
+    <p>When Riverbend Hospital and Lakeside Medical Center wanted to collaborate on a diagnostic model, the simplest approach (pooling all patient records) was also the most risky. Federated learning offers a middle path: train locally, share model updates instead of raw data. But "data stays local" is not the same as "data is safe." Model updates can leak information. A compromised participant can poison gradients. Differential privacy helps but trades utility for protection, especially for rare conditions with small sample sizes.</p>
+    <p>Before choosing any privacy technique, the hospitals need to verify data compatibility. Different ICD-10 interpretations, labeling conventions, and measurement equipment create systematic differences that pooling cannot fix. The model must be validated separately at each site to detect site-specific shortcuts.</p>
+    <div class="takeaway">Federated learning changes what moves between organizations but does not eliminate privacy, security, or governance risks. Trustworthy collaboration requires layered safeguards.</div>
+  </div>
+</section>
+
+<!-- CONNECTING PRINCIPLES -->
+<section>
+  <h2>Connecting Principles: Bias as a System Property</h2>
+
+  <div class="insight-grid">
+    <div class="insight-item">
+      <div class="num">1</div>
+      <div class="label">Audit data before trusting it</div>
+    </div>
+    <div class="insight-item">
+      <div class="num">2</div>
+      <div class="label">Evaluate by subgroup, not just aggregate</div>
+    </div>
+    <div class="insight-item">
+      <div class="num">3</div>
+      <div class="label">Question the target variable itself</div>
+    </div>
+    <div class="insight-item">
+      <div class="num">4</div>
+      <div class="label">Make bias conversations part of team culture</div>
+    </div>
+  </div>
+
+  <p>These four principles emerged from both assignments. The chatbot exercise demonstrated them through technical scenarios. The bias discussion framed them as leadership commitments. The intersection is where they become actionable: a team that builds subgroup evaluation into its pipeline by default does not need a separate "bias review" step because the check is already there.</p>
+  <p>From my own experience building models at Aunnie and working on clinical data at UIC, I have learned that the hardest biases to catch are not in the algorithms. They are in how teams frame problems, what they optimize for, and whose experience they treat as edge cases versus core use cases. A model with 95% overall accuracy that fails systematically for one population is not a success. It is a liability that scales.</p>
+</section>
+
+<!-- PROCESS -->
+<section>
+  <h2>Process</h2>
+  <p>I completed the Data Challenge Scenarios chatbot exercise by working through all three scenarios, engaging with follow-up questions, and receiving a personalized performance summary. I then wrote my personal value statement and field-specific strategies for the bias discussion, drawing on real experiences from my work at Aunnie and UIC. This artifact synthesizes both outputs into a unified narrative, extracting the principles that connect data quality, bias detection, privacy design, and leadership practice.</p>
+</section>
+
+<!-- TOOLS -->
+<section>
+  <h2>Tools and Technologies Used</h2>
+  <ul>
+    <li>AIML-500 Workshop 4 lesson material on data challenges in machine learning</li>
+    <li>Claude (Anthropic) as the AI chatbot coach for the Data Challenge Scenarios exercise</li>
+    <li>Workshop 4 discussion prompts on navigating human bias as a leader</li>
+    <li>Real-world project experience (Aunnie AI startup, UIC clinical data)</li>
+    <li>GitHub Pages for portfolio hosting</li>
+  </ul>
+</section>
+
+<!-- VALUE PROPOSITION -->
+<section>
+  <h2>Value Proposition</h2>
+  <h3>Unique Value</h3>
+  <p>This artifact demonstrates the ability to connect technical data practices with leadership and ethical reasoning. Most portfolio artifacts show either technical skill or reflective writing. This one integrates both, showing that I can identify where bias enters a system, propose concrete mitigation strategies, and articulate why those strategies matter to the people affected by the model's decisions.</p>
+
+  <h3>Relevance</h3>
+  <p>As AI systems are deployed in hiring, healthcare, finance, and content moderation, the engineers building them are responsible for more than accuracy metrics. They need to understand how data quality, historical bias, and privacy constraints interact, and they need the communication skills to raise these issues within their teams. This artifact demonstrates both the technical understanding and the leadership perspective required for responsible AI development.</p>
+</section>
+
+</div>
+
+<footer>
+  Harsh Vyas &middot; Indiana Wesleyan University &middot; AIML-500 Machine Learning Fundamentals &middot; 2026
+</footer>
+
+</body>
+</html>
